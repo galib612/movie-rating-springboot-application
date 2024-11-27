@@ -1,10 +1,7 @@
 package io.javagalib.movie_catalog_service.resource;
 
 
-import io.javagalib.movie_catalog_service.models.CatalogItem;
-import io.javagalib.movie_catalog_service.models.Movie;
-import io.javagalib.movie_catalog_service.models.Rating;
-import io.javagalib.movie_catalog_service.models.UserRating;
+import io.javagalib.movie_catalog_service.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -38,9 +35,9 @@ public class MovieCatalogResource {
 
         return ratings.getUserRating().stream().map(rating -> {
                     // For each movie ID, call movie info service and get details
-                    Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
+                    Movie movie = restTemplate.getForObject("http://movie-info-service/movie/" + rating.getMovieId(), Movie.class);
                     // put them all together
-                    return new CatalogItem(movie.getName(),"Desc", rating.getRating());
+                    return new CatalogItem(movie.getName(), movie.getOverview(), rating.getRating());
         })
                 .collect(Collectors.toList());
 
