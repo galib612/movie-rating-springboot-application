@@ -101,4 +101,7 @@ public class MovieCatalogServiceApplication {
 	>>> Add @HystrixCommand to methods that need circuit breakers
 	>>> Configure Hystrix behaviour
 
+
+	https://www.youtube.com/playlist?list=PL0zysOflRCelb2Y4WOVckFC6B050BzV0D
+
  */

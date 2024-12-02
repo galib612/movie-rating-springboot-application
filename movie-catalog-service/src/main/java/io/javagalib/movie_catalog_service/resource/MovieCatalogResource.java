@@ -61,7 +61,7 @@ public class MovieCatalogResource {
         }).collect(Collectors.toList());
     }
 
-    public List<CatalogItem> getFallbackCatalog(String userId, Throwable throwable) {
+    public List<CatalogItem> getFallbackCatalog(String userId, Exception e) {
         return Arrays.asList(new CatalogItem("No Movie", "", 0));
     }
 
